@@ -26,11 +26,12 @@ pre-commit install
 pre-commit run --all-files
 ```
 
+#### tips:
+
+https://github.com/guettli/python-tips
+
 #### notes:
 
 https://stackoverflow.com/search?tab=votes&q=user%3a229602%20%5bpython%5d&searchOn=3
 https://stackoverflow.com/users/125382/mak
-
-```
-
-```
+https://stackoverflow.com/users/633961/guettli
