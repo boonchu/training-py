@@ -1,3 +1,12 @@
+# https://stackoverflow.com/questions/1988804/what-is-memoization-and-how-can-i-use-it-in-python
+#
+# Memoization effectively refers to remembering ("memoization" → "memorandum" → to be remembered)
+# results of method calls based on the method inputs and then returning the remembered result
+# rather than computing the result again.
+
+# https://docs.python.org/3/library/functools.html#functools.wraps
+# decorator with functools.wraps
+
 from functools import wraps
 
 
