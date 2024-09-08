@@ -1,3 +1,7 @@
+#### I choose `Carmel Case`
+
+- [effective-variable-naming-in-programming-camelcase-vs-snake-case](https://medium.com/@eusdima/effective-variable-naming-in-programming-camelcase-vs-snake-case-a026e3037792#:~:text=For%20example%2C%20JavaScript%20and%20Java%20developers%20typically,use%20CamelCase%2C%20while%20Python%20developers%20prefer%20snake_case.)
+
 #### codesmelling with pylint/black:
 
 - [example](https://raw.githubusercontent.com/saminarp/rwar/main/.pylintrc)
