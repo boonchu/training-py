@@ -25,6 +25,10 @@ def memoize(function):
     return wrapper
 
 
+# https://zlliu.substack.com/i/147474066/wrapped-to-undecorate
+# 7) __wrapped__ to undecorate
+
+
 @memoize
 def fibonacci(n):
     if n < 2:
