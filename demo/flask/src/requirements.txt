@@ -1,0 +1,6 @@
+Flask
+Gunicorn
+Markdown==3.4.4
+boto3==1.28.40
+DateTime==5.2
+uuid==1.30

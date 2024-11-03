@@ -1,0 +1,202 @@
+#### neovim setup
+
+https://www.youtube.com/watch?v=4BnVeOUeZxc
+
+>>>> pyright *** Type Checker *** <<<<
+
+> npm install pyright
+> vim ~/.config/nvim/lua/custom/configs/overrides.lua
+
+  30 M.mason = {
+  31   ensure_installed = {
+  32   │ -- lua stuff
+  33   │ "lua-language-server",
+  34   │ "stylua",
+  35   │
+  36   │ -- web dev stuff
+  37   │ "css-lsp",
+  38   │ "html-lsp",
+  39   │ "typescript-language-server",
+  40   │ "deno",
+  41   │ "prettier",
+  42   │
+  43   │ -- c/cpp stuff
+  44   │ "clangd",
+  45   │ "clang-format",
+  46   │
+  47   │ -- terraform
+  48   │ "terraform-ls",
+  49   │
+  50   │ -- python  <<---
+  51   │ "pyright", <<---
+  52   },
+  53 }
+
+> vim and enter :MasonInstallAll
+
+> vim ~/.config/nvim/lua/custom/configs/lspconfig.lua
+
+   6 -- if you just want default config for the servers then put them in a table
+   7 local servers = { "html", "cssls", "tsserver", "clangd", "terraformls", "tflint", "terraform_lsp", "pyright" } <<-- 
+
+> Test with vim
+# https://betterprogramming.pub/cracking-the-amazon-interview-cf6a6c5f954a
+# https://www.educative.io/find-the-missing-number
+
+>>>> black *** code formatter *** <<<<
+
+> vim ~/.config/nvim/lua/custom/configs/overrides.lua
+
+  50   │ -- python
+  51   │ "pyright",
+  52   │ "black", <<--
+  53   },
+
+> vim and enter :MasonInstallAll
+
+# Configure null-ls.lua
+> vim ~/.config/nvim/lua/custom/configs/null-ls.lua
+
+   9 local sources = {
+  10 │ │
+  11 │ -- webdev stuff
+  12 │ b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  13 │ b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
+  14 │ │
+  15 │ -- Lua
+  16 │ b.formatting.stylua,
+  17 │ │
+  18 │ -- cpp
+  19 │ b.formatting.clang_format,
+  20 │ │
+  21 │ -- python
+  22 │ b.formatting.black, <<---
+  23 }
+
+# Use this code below to format test_method
+
+def is_unique(
+               s
+               ):
+    s = list(s
+                )
+    s.sort()
+ 
+ 
+    for i in range(len(s) - 1):
+        if s[i] == s[i + 1]:
+            return 0
+    else:
+        return 1
+ 
+ 
+if __name__ == "__main__":
+    print(
+          is_unique(input())
+         )
+
+# Space~f+m to auto formatting
+
+>>>> DAP *** debugger *** <<<<<
+
+# Configure plugins.lua, overrides.lua
+
+   53   -- Install a plugin
+   54   {
+   55   │ "mfussenegger/nvim-dap",
+   56   },
+   57
+   58   {
+   59   │ "mfussenegger/nvim-dap-python",
+   60   │ ft = "python",
+   61   │ dependencies = {
+   62   │ │ "mfussenegger/nvim-dap",
+   63   │ },
+H  64   │ config = function(_, opts)     ■ Unused local `opts`.
+   65   │ │ local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+   66   │ │ require("dap-python").setup(path)
+   67   │ end,
+   68   },
+
+  50   │ -- python
+  51   │ "pyright",
+  52   │ "black",
+  53   │ "debugpy",
+
+# Configure nvim-dap-ui
+
+> vim ~/.config/nvim/lua/custom/plugins.lua
+
+   75   {
+   76   │ "rcarriga/nvim-dap-ui",
+   77   │ dependencies = "mfussenegger/nvim-dap",
+   78   │ config = function()
+   79   │ │ local dap = require("dap")
+   80   │ │ local dapui = require("dapui")
+   81   │ │ dapui.setup()
+   82   │ │ dap.listeners.after.event_initialized["dapui_config"] = function()
+   83   │ │ │ dapui.open()
+   84   │ │ end
+   85   │ │ dap.listeners.before.event_terminated["dapui_config"] = function()
+   86   │ │ │ dapui.close()
+   87   │ │ end
+   88   │ │ dap.listeners.before.event_exited["dapui_config"] = function()
+   89   │ │ │ dapui.close()
+   90   │ │ end
+   91   │ end
+   92   },
+
+> ~/.config/nvim/lua/custom/mappings.lua
+
+  10 M.dap = {
+  11   plugin = true,
+  12   n = {
+  13   │ ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>"}
+  14   }
+  15 }
+  16
+  17 M.dap_python = {
+  18   plugin = true,
+  19   n = {
+  20   │ ["<leader>dpr"] = {
+  21   │ │ function()
+  22   │ │ │ require('dap-python').test_method()
+  23   │ │ end
+  24   │ }
+  25   }
+  26 }
+
+# Use custom mappings
+> vim ~/.config/nvim/lua/custom/chadrc.lua
+
+  17 -- check core.mappings for table structure
+  18 M.mappings = require "custom.mappings"
+
+# Update plugins to configure 'dap' and 'dap-python'
+> vim ~/.config/nvim/lua/custom/plugins.lua
+
+   53   -- Install a plugin
+   54   {
+   55   │ "mfussenegger/nvim-dap",
+H  56   │ config = function(_, opts)     ■ Unused local `opts`.
+   57   │ │ require("core.utils").load_mappings("dap")
+   58   │ end
+   59   },
+   60
+   61   {
+   62   │ "mfussenegger/nvim-dap-python",
+   63   │ ft = "python",
+   64   │ dependencies = {
+   65   │ │ "mfussenegger/nvim-dap",
+   66   │ │ "rcarriga/nvim-dap-ui",
+   67   │ },
+H  68   │ config = function(_, opts)     ■ Unused local `opts`.
+   69   │ │ local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+   70   │ │ require("dap-python").setup(path)
+   71   │ │ require("core.utils").load_mappings("dap_python")
+   72   │ end,
+   73   },
+
+# :TSInstall python
+# Space d+b - to set break point (Set break point)
+# Space d+p+r - to open nvim dap UI (DPR - Debug Python Run)
