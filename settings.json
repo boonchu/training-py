@@ -1,0 +1,55 @@
+{
+  "editor.fontSize": 18,
+  "editor.formatOnType": true,
+  "workbench.colorTheme": "Dracula Soft",
+  "editor.fontFamily": "Fira Code",
+  "files.autoSave": "onFocusChange",
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "workbench.iconTheme": "material-icon-theme", // My Icon Theme
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "smooth",
+  "editor.letterSpacing": 0.2,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.minimap.enabled": false, // disabled minimap
+  "editor.fontLigatures":"'zero', 'ss02', 'ss03', 'ss04', 'ss05', 'calt'",
+  "editor.formatOnPaste": true, // text will format on pasting the code
+  "editor.formatOnSave": true, // text will format if you hit ctrl + S
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+   "editor.fontLigatures": "'ss02', 'ss19'",
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.format.enable": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+  "git.openRepositoryInParentFolders": "never",
+  "workbench.colorCustomizations": {
+    "editorInfo.foreground": "#ff0000"
+  },
+  "cSpell.userWords": ["minvals"],
+  "remote.SSH.remotePlatform": {
+    "*.gitpod.io": "linux"
+  },
+  "remote.autoForwardPortsSource": "hybrid",
+  "editor.fontVariations": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "explorer.autoReveal": true,
+  "markdown.preview.scrollEditorWithPreview": true,
+  "markdown.preview.scrollPreviewWithEditor": true,
+  "terminal.explorerKind": "external",
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.windowsExec": "C:\\Users\\boonchu\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
+  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.fontSize": 16
+}

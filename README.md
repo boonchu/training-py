@@ -1,6 +1,14 @@
 #### Customize VsCode settings
 
 - [vs-code-settings](https://dev.to/softwaredotcom/vs-code-settings-you-should-customize-5e75)
+- [top-10s-vscode-settings](https://dev.to/bhagatparwinder/top-10-vs-code-settings-1bkm)
+- [set windows terminal as default one](https://offering.solutions/blog/articles/2020/03/24/setting-windows-terminal-as-default-external-terminal-in-visual-studio-code/)
+- [customize fonts](https://dev.to/solexy79/installing-a-new-font-for-vs-code-in-three-3-simple-steps-13a5)
+- copy settings to local drive.
+
+```
+cp settings.json /mnt/<drive_replace_me>/Users/<userId_replace_me_here>/AppData/Roaming/Code/User/settings.json
+```
 
 #### I choose `Carmel Case`
 
